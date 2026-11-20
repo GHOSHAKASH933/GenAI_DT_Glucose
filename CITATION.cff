@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or the results, please cite it as below."
+title: "GenAI_DT_Glucose: generative digital twins for glucose forecasting on real CGM data"
+type: software
+authors:
+  - family-names: Ghosh
+    given-names: Akash
+    affiliation: "Centre for Artificial Intelligence and Machine Learning, Indian Statistical Institute, Kolkata"
+repository-code: "https://github.com/GHOSHAKASH933/GenAI_DT_Glucose"
+license: MIT
+date-released: "2026-11-17"
+keywords:
+  - digital twin
+  - continuous glucose monitoring
+  - conditional variational autoencoder
+  - diffusion model
+  - conformal prediction

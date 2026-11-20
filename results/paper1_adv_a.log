@@ -1,0 +1,56 @@
+  seed 0 ridge                 0.1s
+  seed 0 gru                  28.2s
+  seed 0 gauss_mlp             8.1s
+  seed 0 transformer          90.5s
+  seed 0 cqr                  10.5s
+  seed 0 twin                 17.6s
+  seed 0 hybrid               17.3s
+  seed 0 diffusion            96.7s
+  seed 0 hybrid_diffusion     97.5s
+  seed 0 tf_cvae              19.5s
+  seed 0 tf_diffusion         96.5s
+  seed 0 ablation             60.3s
+  seed 0 train_size           13.7s
+seed 0 total 560s
+  seed 1 ridge                 0.0s
+  seed 1 gru                  21.9s
+  seed 1 gauss_mlp             8.1s
+  seed 1 transformer          97.1s
+  seed 1 cqr                  12.2s
+  seed 1 twin                 21.8s
+  seed 1 hybrid               24.3s
+  seed 1 diffusion            91.7s
+  seed 1 hybrid_diffusion     88.5s
+  seed 1 tf_cvae              24.0s
+  seed 1 tf_diffusion         93.1s
+  seed 1 ablation             75.1s
+  seed 1 train_size           17.3s
+seed 1 total 578s
+  seed 2 ridge                 0.0s
+  seed 2 gru                  22.1s
+  seed 2 gauss_mlp             7.8s
+  seed 2 transformer         106.1s
+  seed 2 cqr                  13.2s
+  seed 2 twin                 30.3s
+  seed 2 hybrid               25.4s
+  seed 2 diffusion            93.4s
+  seed 2 hybrid_diffusion     92.0s
+  seed 2 tf_cvae              19.7s
+  seed 2 tf_diffusion         93.1s
+  seed 2 ablation             66.0s
+  seed 2 train_size           13.2s
+seed 2 total 586s
+  seed 3 ridge                 0.0s
+  seed 3 gru                  21.7s
+  seed 3 gauss_mlp             8.1s
+  seed 3 transformer          94.7s
+  seed 3 cqr                  10.9s
+  seed 3 twin                 17.1s
+  seed 3 hybrid               17.2s
+  seed 3 diffusion            86.3s
+  seed 3 hybrid_diffusion     91.5s
+  seed 3 tf_cvae              20.4s
+  seed 3 tf_diffusion         92.3s
+  seed 3 ablation             68.9s
+  seed 3 train_size           17.4s
+seed 3 total 550s

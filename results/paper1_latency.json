@@ -1,0 +1,58 @@
+{
+ "ridge": {
+  "latency_ms": 0.05215999954089057,
+  "latency_p90_ms": 0.08445159965049243,
+  "params": 336
+ },
+ "gru": {
+  "latency_ms": 0.4240800003572076,
+  "latency_p90_ms": 0.6304653003098792,
+  "params": 24648
+ },
+ "gauss_mlp": {
+  "latency_ms": 0.1754750001055072,
+  "latency_p90_ms": 0.2682973003174994,
+  "params": 24336
+ },
+ "transformer": {
+  "latency_ms": 0.601010499849508,
+  "latency_p90_ms": 0.8985043996290188,
+  "params": 73904
+ },
+ "cqr": {
+  "latency_ms": 0.11233850000280654,
+  "latency_p90_ms": 0.1786103995982558,
+  "params": 41880
+ },
+ "twin": {
+  "latency_ms": 0.20691950021500816,
+  "latency_p90_ms": 0.3234061004150135,
+  "params": 53808
+ },
+ "diffusion": {
+  "latency_ms": 4.684789999828354,
+  "latency_p90_ms": 7.687065200389043,
+  "params": 43144
+ },
+ "hybrid": {
+  "latency_ms": 0.33742200048436644,
+  "latency_p90_ms": 0.5211571998188448,
+  "params": 54128
+ },
+ "hybrid_diffusion": {
+  "latency_ms": 4.755592500259809,
+  "latency_p90_ms": 7.62337940059297,
+  "params": 43464
+ },
+ "tf_cvae": {
+  "latency_ms": 0.882604500020534,
+  "latency_p90_ms": 1.3562144003117282,
+  "params": 127712
+ },
+ "tf_diffusion": {
+  "latency_ms": 5.272973499813816,
+  "latency_p90_ms": 8.675402200697137,
+  "params": 117048
+ },
+ "note": "untrained networks, 32 samples per window for sampling models, DDIM with 15 steps, one CPU thread"
+}

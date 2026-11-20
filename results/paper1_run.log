@@ -1,0 +1,10 @@
+loaded 125 records; config {'epochs': 25, 'stride': 2, 'betas': (0.1, 0.5), 'z_dim': 16, 'n_samples': 64, 'adapt_days': (1, 2, 4), 'adapt_epochs': 10, 'rounds': 8, 'local_epochs': 3, 'pers_epochs': 5}
+  seed 0 done in 237s (twin beta=0.5)
+  seed 1 done in 230s (twin beta=0.5)
+  seed 2 done in 230s (twin beta=0.5)
+  seed 3 done in 221s (twin beta=0.5)
+  seed 4 done in 291s (twin beta=0.5)
+  seed 5 done in 311s (twin beta=0.5)
+  seed 6 done in 269s (twin beta=0.5)
+  seed 7 done in 221s (twin beta=0.5)
+wrote /home/claude/results/paper1_results.json
