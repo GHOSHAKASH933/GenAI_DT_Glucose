@@ -171,6 +171,14 @@ tok["fig_abl"] = figure("fig9_ablation_size.png", "(a) 60-minute RMSE after remo
                         "regression and the hybrid twin are trained on a fraction of the training patients. Error bars are "
                         "bootstrap 95\\% intervals over seeds.", "fig:abl")
 TA = adv_narrative(ADV, RUNS, HY, LAT, g, h)
+# per-type (Mondrian) conformal intervals come from a second run of p1_advanced.py on the same splits,
+# which stores pooled and per-type intervals side by side
+RERUN_SRC = os.environ.get("RERUN_SRC", str(RESDIR / "paper1_advanced_rerun.json"))
+RR = json.load(open(RERUN_SRC))["runs"]
+assert [r["seed"] for r in RR] == [r["seed"] for r in ADV], "rerun and advanced runs must share seeds"
+from narrative_adv import mond_narrative
+tok["mond_table"] = AT.mond_table(RR)
+TA.update(mond_narrative(RR, ADV))
 tok.update({k: v for k, v in TA.items() if isinstance(v, str)})
 tok.update({k: v for k, v in adv_framing(ADV, RUNS, HY, LAT, g, h, TA).items() if isinstance(v, str)})
 

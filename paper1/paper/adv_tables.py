@@ -145,3 +145,27 @@ def lat_table(LAT):
         "draw 32 scenarios per window; the diffusion sampler uses 15 steps. The Transformer-based hybrids need both networks. "
         "The quantile network and the point models return one forecast.",
         "tab:lat", "lccc", r"\textbf{Model} & \textbf{Parameters} & \textbf{Median ms} & \textbf{90th pct. ms}", rows)
+
+
+MOND = [k for k in ORDER if k not in ("ridge", "gru")]      # models with a conformal interval
+
+
+def mond_table(A):
+    """Pooled against per-type (Mondrian) split-conformal 90% intervals at 60 minutes, from the rerun that stores both."""
+    rows = []
+    for k in MOND:
+        rows.append(f"{LABEL[k]} & {cell(A, k, ('interval_conf', 'coverage_T1DM'), 3)} & "
+                    f"{cell(A, k, ('interval_mondrian', 'coverage_T1DM'), 3)} & "
+                    f"{cell(A, k, ('interval_conf', 'coverage_T2DM'), 3)} & "
+                    f"{cell(A, k, ('interval_mondrian', 'coverage_T2DM'), 3)} & "
+                    f"{cell(A, k, ('interval_conf', 'interval_score'), 1, plain=True)} & "
+                    f"{cell(A, k, ('interval_mondrian', 'interval_score'), 1, plain=True)}")
+    return wide(table(
+        "Coverage of 90\\% intervals at 60 minutes for each diabetes type after a pooled split-conformal correction and after "
+        "a separate (Mondrian) correction for each type, with the interval score (mg/dL, lower is better) over all test "
+        "windows. Mean over seeds with bootstrap 95\\% interval; interval scores are means.",
+        "tab:mond", "lcccccc",
+        r"& \multicolumn{2}{c}{\textbf{T1DM coverage}} & \multicolumn{2}{c}{\textbf{T2DM coverage}} & "
+        r"\multicolumn{2}{c}{\textbf{Interval score}}\\ \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}"
+        r"\textbf{Model} & pooled & per type & pooled & per type & pooled & per type",
+        rows, size=r"\scriptsize"))

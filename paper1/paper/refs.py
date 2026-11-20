@@ -158,6 +158,8 @@ def mdpi(k):
         s = f"{au}. \\emph{{{t}}}; {e['pub']}: {e['addr']}, {e['y']}."
     elif e["kind"] == "arxiv":
         s = f"{au}. {t}. \\emph{{arXiv}} \\textbf{{{e['y']}}}, arXiv:{e['arx']}."
+    elif e["kind"] == "unpub":
+        s = f"{au}. {t}. {e['note']}, {e['y']}."
     else:
         s = f"{au}. {t}. {e['pub']}, {e['y']}. Available online: \\url{{{e['url']}}}."
     return s.replace("..", ".")
@@ -179,6 +181,8 @@ def els(k):
         s = f"{names}, {t}, {e['pub']}, {e['addr']}, {e['y']}."
     elif e["kind"] == "arxiv":
         s = f"{names}, {t}, arXiv preprint arXiv:{e['arx']} ({e['y']})."
+    elif e["kind"] == "unpub":
+        s = f"{names}, {t}, {e['note']} ({e['y']})."
     else:
         s = f"{names}, {t}, {e['pub']} ({e['y']}). \\url{{{e['url']}}}."
     return s.replace("..", ".")
@@ -242,4 +246,16 @@ R.update({
      title="Glucose-ML: A collection of longitudinal diabetes datasets for development of robust AI solutions", y=2025, arx="2507.14077"),
  "Lutsker2024": dict(kind="arxiv", au=["G. Lutsker", "G. Sapir", "S. Shilo", "J. Merino", "A. Godneva", "J.R. Greenfield"], etal=True,
      title="From glucose patterns to health outcomes: A generalizable foundation model for continuous glucose monitor data analysis", y=2024, arx="2408.11876"),
+})
+
+
+# ---- companion study (cited by Paper 1 for the treatment-effect question)
+R.update({
+ "Ghosh2026decline": dict(kind="unpub", au=["A. Ghosh", "A. Dalui"],
+     title="When a digital twin should decline to answer: Treatment-effect validity and calibrated abstention in generative digital twins",
+     note="Manuscript in preparation", y=2026),
+})
+R.update({
+ "Bostrom2020": dict(kind="conf", au=["H. Bostr{\\\"o}m", "U. Johansson"], title="Mondrian conformal regressors",
+     bt="Proceedings of the Ninth Symposium on Conformal and Probabilistic Prediction and Applications (COPA 2020), PMLR 128", y=2020, p="114--133"),
 })

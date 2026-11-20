@@ -11,3 +11,11 @@ data/*
 *.synctex.gz
 paper1/paper/build/Definitions/
 .DS_Store
+# manuscript text: kept out of the public repository until after the journal's similarity check
+paper1/paper/template.tex
+paper1/paper/narrative_*.py
+paper1/paper/main.tex
+paper1/paper/Definitions/
+paper1/paper/figures/
+paper1/paper/build/
+*.zip

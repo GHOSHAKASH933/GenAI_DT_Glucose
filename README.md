@@ -36,7 +36,7 @@ Values are means over splits; the paper reports bootstrap intervals and per-spli
 - The plain CVAE twin is the odd one out (31.3 mg/dL). The diffusion twin, with no linear base, is not (25.2), so the accuracy penalty comes from the CVAE and not from generative twins as a class.
 - Gaussian-head samples zigzag from step to step, while diffusion samples are smooth and about four times closer to real trajectories in energy distance.
 - For hypoglycaemia the Transformer ranks best (AUROC) and the diffusion models give the better probabilities (Brier score, ECE).
-- Raw 90% intervals under-cover for every model; split-conformal correction fixes the average but type 1 patients stay under-covered. The code now also computes per-type (Mondrian) conformal intervals, which calibrate type 1 and type 2 separately; their numbers appear in `results/summary.md` after the benchmark is rerun (see *Changes since the submitted version*).
+- Raw 90% intervals under-cover for every model. Pooled split-conformal correction fixes the average but leaves type 1 patients at 0.84–0.88. A separate (Mondrian) correction for each diabetes type brings them to 0.89–0.91, higher in all 8 splits for 8 of 9 models, with an unchanged interval score. The catch is that each validation split holds only two or three type 1 patients, so on a single split type 1 coverage ranges from 0.83 to 0.98.
 - Adapting to a new patient, federated averaging for dissimilar clients and int8 quantisation did not give the gains that twin proposals usually claim (details in the paper).
 
 ![Accuracy against scenario realism](results/figures/fig6_tradeoff.png)
@@ -49,7 +49,7 @@ Values are means over splits; the paper reports bootstrap intervals and per-spli
 ```bash
 pip install -r requirements.txt
 # put the Shanghai files into data/ (see data/README.md)
-make test          # 20 unit tests and a synthetic end-to-end smoke test, about 10 s
+make test          # 21 unit tests and a synthetic end-to-end smoke test, about 10 s
 make quick         # 2-epoch pass of the extended benchmark on the real data
 make experiments   # full study, 8 seeds; several hours on 2 CPU cores
 make summary       # headline table as results/summary.md
@@ -82,13 +82,16 @@ tests/            unit tests and a smoke test
 
 - **Per-type (Mondrian) conformal intervals.** `p1_advanced.py` now stores, next to the pooled split-conformal interval
   (`interval_conf`), an interval whose correction is computed separately for type 1 and type 2 validation windows
-  (`interval_mondrian`, with `Q_T1DM`, `Q_T2DM` and the number of validation windows per type). This targets the one
-  calibration failure the benchmark reports: type 1 patients stay under-covered after pooled correction. The result
-  files in `results/` predate this change and do not contain the new key. Rerun `make experiments` (or at least
-  `paper1/p1_advanced.py`) on the real data, then `make summary`, which adds a pooled-vs-Mondrian coverage table.
-  Only about two or three type 1 patients fall in each validation split, so the per-type correction rests on few
-  patients even though it uses many windows. Report it with that caveat.
-- `.gitignore` no longer hides the run logs in `results/`.
+  (`interval_mondrian`, with `Q_T1DM`, `Q_T2DM` and the number of validation windows per type). The first run of the
+  extended benchmark (`results/paper1_advanced.json`) predates this, so the benchmark was run a second time on the same
+  splits, seeds and code (`results/paper1_advanced_rerun.json`, logs `paper1_adv_rerun_*.log`). The rerun reproduces
+  the first: the mean 60-minute RMSE of every model is within 0.18 mg/dL, and pooled coverage within 0.004. All other
+  numbers in the paper still come from the first run. The per-type results are in the table at the end of
+  `results/summary.md` and in a new subsection of the paper.
+- The paper now cites the companion study (below) where it leaves the treatment question to separate work.
+- `.gitignore` no longer hides the run logs in `results/`, and keeps the manuscript files and Overleaf zips out of the
+  repository.
+- `paper1/summarise.py` was broken by an editing error in the previous commit. It is fixed, and a test now runs it.
 
 ## Companion paper
 
